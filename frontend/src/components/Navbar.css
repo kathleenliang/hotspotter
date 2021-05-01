@@ -1,0 +1,28 @@
+a {
+    font-family: 'Futura';
+    font-weight: '500';
+    font-size: 20px;
+    line-height: 27.89px;
+    color: #032239;
+    text-decoration: none;
+    padding-right: 45px;
+}
+
+a:hover {
+    color: #EE5049;
+}
+
+.logo {
+    font-size: 36px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.nav {
+    padding-top: 19px;
+    padding-bottom: 19px;
+    padding-left: 72px;
+    border-bottom: 1px solid #D0D4D8;
+}
