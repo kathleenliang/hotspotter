@@ -205,3 +205,122 @@ button {
 .active a {
   text-decoration: none;
 }
+
+.submit-subtitle {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 32px;
+  color: #000000;
+}
+
+.submit-label {
+  font-family: 'Futura';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.submit-form-fields {
+  display: flex;
+  justify-content: space-between;
+}
+
+.file-btn {
+  font-family: 'Futura';
+  width: 200px;
+  height: 40px;
+  background-color: #032239;
+  color: #FFFFFF;
+  border: none;
+  text-align: center;
+  font-size: 18px;
+}
+
+.info {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  /* Accent Colour */
+
+  color: #8A99A8;
+}
+
+.submit-description {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 25px;
+  text-align: center;
+  padding: 0 300px;
+  padding-bottom: 60px;
+
+  color: #000000;
+}
+
+.search-input {
+  width: 250px;
+  height: 40px;
+  background: #FFFFFF;
+  font-family: 'Futura';
+  font-size: 16px;
+  padding-left: 10px;
+
+  border: 1px solid #8A99A8;
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(49, 42, 42, 0.05);
+}
+
+.center {
+  text-align: center;
+}
+
+.submit-form {
+  padding: 60px 200px;
+}
+
+.submit-subtitle {
+  text-align: left;
+  padding: 20px 0;
+}
+
+.submit-vax {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  /* identical to box height */
+
+  display: flex;
+  align-items: center;
+
+  /* Text */
+
+  color: #032239;
+}
+
+.left {
+  padding-top: 20px;
+  text-align: left;
+}
+
+.submit-label-section {
+  width: 400px;
+}
+
+input[type="file"] {
+  display: none;
+}
+
