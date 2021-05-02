@@ -18,8 +18,9 @@ class ClinicPage extends Component {
         }).then((response) => response.json())
             .then((data) => {
                 data.Clinics.forEach((clinic) => {
-                    let postalCode = this.props.location.state.postalCode
+                    let postalCode = this.props.location.state.postalCode.substr(0, 3)
                     if (clinic.postal_codes.split(",").includes(postalCode)) {
+                        let url = "//" + clinic.url
                         cards.push(<ClinicCard
                             name={clinic.name}
                             address={clinic.address}
@@ -28,7 +29,7 @@ class ClinicPage extends Component {
                             likes={clinic.likes}
                             dislikes={clinic.dislikes}
                             submitted_from={clinic.submitted_from}
-                            url={clinic.url}
+                            url={url}
                         />)
                     }
                 });

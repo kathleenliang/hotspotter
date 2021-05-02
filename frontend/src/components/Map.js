@@ -22,7 +22,7 @@ const handleApiLoaded = (map, maps, props, clinics) => {
     const infowindows = [];
     clinics.forEach((clinic) => {
         try {
-            let postalCode = props.postalCode
+            let postalCode = props.postalCode.substr(0, 3)
             if (clinic.postal_codes.split(",") != null && clinic.postal_codes.split(",").includes(postalCode)) {
                 let lat;
                 let lng;
