@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import Navbar from "./components/Navbar"
 import LandingPage from './components/LandingPage'
 import EligibilityPage from './components/EligibilityPage'
+import EligiblePage from './components/EligiblePage'
 import ClinicPage from './components/ClinicPage'
 import SubmitLocationPage from './components/SubmitLocationPage'
 
@@ -15,7 +16,8 @@ function App() {
             <Switch>
              <Route path="/" component={LandingPage} exact/>
              <Route path="/eligibility" component={EligibilityPage}/>
-             <Route path="/clinics" component={ClinicPage}/>
+             <Route path="/eligible" render={props => <EligiblePage {...props}/>} />
+             <Route path="/clinics" render={props => <ClinicPage {...props}/>}/>
              <Route path="/submit" component={SubmitLocationPage}/>
             <Route component={Error}/>
            </Switch>

@@ -1,17 +1,16 @@
 import React, { Component } from 'react';
-import { Link } from "react-router-dom";
-import './Navbar.css';
+import { NavLink } from "react-router-dom";
 
 class Navbar extends Component {
     render() {
         return (
             <div class="nav">
-                <Link to="/" class="logo nav-link">
+                <NavLink to="/" class="logo nav-link">
                     <span><img src="/Logo.png" />Hotspotter</span>
-                </Link>
-                <Link to="/eligibility" class="nav-link">Check eligibility</Link>
-                <Link to="/clinics" class="nav-link">Find a clinic</Link>
-                <Link to="/submit" class="nav-link">Submit a vaccine location</Link>
+                </NavLink>
+                <NavLink to="/eligibility" activeClassName="active">Check eligibility</NavLink>
+                <NavLink to="/clinics" activeClassName="active">Find a clinic</NavLink>
+                <NavLink to="/submit" activeClassName="active">Submit a vaccine location</NavLink>
             </div>
         );
     }
