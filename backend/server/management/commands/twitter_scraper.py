@@ -34,7 +34,7 @@ class Command(BaseCommand):
         return ''
 
     def find_maps_info(self, text):
-        key = 'AIzaSyCmFZqhH8TlOkUg5Sh-Py0TCq9Qp5HoZWE'
+        key = ''
         place_id_query_string = 'https://maps.googleapis.com/maps/api/place/findplacefromtext/json?input=' + text + '&inputtype=textquery&fields=place_id&key=' + key
 
         response = requests.get(place_id_query_string)
