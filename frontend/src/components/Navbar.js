@@ -6,12 +6,12 @@ class Navbar extends Component {
     render() {
         return (
             <div class="nav">
-                <Link to="/" class="logo">
+                <Link to="/" class="logo nav-link">
                     <span><img src="/Logo.png" />Hotspotter</span>
                 </Link>
-                <Link to="/eligibility">Check eligibility</Link>
-                <Link to="/clinics">Find a clinic</Link>
-                <Link to="/submit">Submit a vaccine location</Link>
+                <Link to="/eligibility" class="nav-link">Check eligibility</Link>
+                <Link to="/clinics" class="nav-link">Find a clinic</Link>
+                <Link to="/submit" class="nav-link">Submit a vaccine location</Link>
             </div>
         );
     }

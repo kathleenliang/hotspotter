@@ -14,5 +14,5 @@ code {
 
 @font-face {
   font-family: 'Futura';
-  src: local('Futura'), url(./fonts/unicode.futurab.ttf) format('truetype');
+  src: local('Futura'), url(./fonts/futura_medium_bt.ttf) format('truetype');
 }
