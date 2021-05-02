@@ -28,7 +28,7 @@ const handleApiLoaded = (map, maps, props, clinics) => {
                 let lng;
                 const address = clinic.address;
                 const newAddress = address.replace(" ", "+")
-                fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + newAddress + "&key=AIzaSyBo5OGv3cOuH3JUggXwOuXrDRXYu-8fBLg")
+                fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + newAddress + "&key=")
                     .then((response) => response.json())
                     .then((data) => {
                         lat = parseFloat(data['results'][0]['geometry']['location']['lat']);
@@ -94,7 +94,7 @@ class Map extends Component {
         return (
             <div style={{ height: '100vh', width: '50%', float: "right" }}>
                 <GoogleMapReact
-                    bootstrapURLKeys={{ key: "AIzaSyBo5OGv3cOuH3JUggXwOuXrDRXYu-8fBLg" }}
+                    bootstrapURLKeys={{ key: "" }}
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
