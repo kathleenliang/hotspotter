@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import GoogleMapReact from 'google-map-react';
-import Marker from './Marker';
 
 const getInfoWindowString = (clinic) => `
 <div>
@@ -18,43 +17,45 @@ const getInfoWindowString = (clinic) => `
     </div>
 </div>`;
 
-const handleApiLoaded = (map, maps, clinics) => {
+const handleApiLoaded = (map, maps, props, clinics) => {
     const markers = [];
     const infowindows = [];
     clinics.forEach((clinic) => {
         try {
-            let lat;
-            let lng;
-            const address = clinic.address;
-            const newAddress = address.replace(" ", "+")
-            fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + newAddress + "&key=AIzaSyBo5OGv3cOuH3JUggXwOuXrDRXYu-8fBLg")
-                .then((response) => response.json())
-                .then((data) => {
-                    lat = parseFloat(data['results'][0]['geometry']['location']['lat']);
-                    lng = parseFloat(data['results'][0]['geometry']['location']['lng']);
-                    markers.push(new maps.Marker({
-                        position: {
-                            lat: lat,
-                            lng: lng,
-                        },
-                        map,
-                    }));
-                });
+            let postalCode = props.postalCode
+            if (clinic.postal_codes.split(",") != null && clinic.postal_codes.split(",").includes(postalCode)) {
+                let lat;
+                let lng;
+                const address = clinic.address;
+                const newAddress = address.replace(" ", "+")
+                fetch("https://maps.googleapis.com/maps/api/geocode/json?address=" + newAddress + "&key=AIzaSyBo5OGv3cOuH3JUggXwOuXrDRXYu-8fBLg")
+                    .then((response) => response.json())
+                    .then((data) => {
+                        lat = parseFloat(data['results'][0]['geometry']['location']['lat']);
+                        lng = parseFloat(data['results'][0]['geometry']['location']['lng']);
+                        markers.push(new maps.Marker({
+                            position: {
+                                lat: lat,
+                                lng: lng,
+                            },
+                            map,
+                        }));
+                        markers.forEach((marker, i) => {
+                            marker.addListener('click', () => {
+                                infowindows[i].open(map, marker);
+                            });
+                        });
+                    });
 
-            infowindows.push(new maps.InfoWindow({
-                content: getInfoWindowString(clinic),
-            }));
-
+                infowindows.push(new maps.InfoWindow({
+                    content: getInfoWindowString(clinic),
+                }));
+            }
         } catch (err) {
             console.log(err)
         }
     });
 
-    markers.forEach((marker, i) => {
-        marker.addListener('click', () => {
-            infowindows[i].open(map, marker);
-        });
-    });
 };
 
 class Map extends Component {
@@ -81,9 +82,6 @@ class Map extends Component {
                 async: false
             }).then((response) => response.json())
                 .then((data) => {
-                    data.Clinics.forEach((result) => {
-                        result.show = false; // eslint-disable-line no-param-reassign
-                    });
                     this.setState({ clinics: data.Clinics });
                 });
         } catch (err) {
@@ -100,15 +98,8 @@ class Map extends Component {
                     defaultCenter={this.props.center}
                     defaultZoom={this.props.zoom}
                     yesIWantToUseGoogleMapApiInternals
-                    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps, clinics)}
-                >
-                    <Marker
-                        lat={43.9885}
-                        lng={-79.4704}
-                        text="My Marker"
-                        color="red"
-                    />
-                </GoogleMapReact>
+                    onGoogleApiLoaded={({ map, maps }) => handleApiLoaded(map, maps, this.props, clinics)}
+                />
             </div>
         );
     }
